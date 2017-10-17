@@ -1,18 +1,18 @@
-# Depends on: lxqt-build-tools qtsvg hicolor-icon-theme xdg-utils dejavu-ttf freefont-ttf noto-fonts ttf-liberation
+# Depends on: lxde-menu-data lxqt-build-tools qtsvg hicolor-icon-theme xdg-utils dejavu-ttf freefont-ttf noto-fonts ttf-liberation breeze-icons
 
 
 description="Common data to run a LXQt session."
 url="http://lxqt.org"
-packager="greg<greg@nutyx.org>"
-contributors=""
+packager="tnut<tnut@nutyx.org>"
+contributors="Greg"
 
-run=()
+run=(lxde-menu-data xdg-utils breeze-icons dejavu-ttf freefont-ttf noto-fonts)
 
 
 
 name=lxqt-common
 version=0.11.2
-release=1
+release=2
 
 source=(https://github.com/lxde/$name/releases/download/$version/$name-$version.tar.xz
 )
@@ -32,6 +32,10 @@ make
 package() {
 cd build
 make DESTDIR=$PKG install
+sed -i "s@icon_theme=oxygen@icon_theme=breeze@" \
+$PKG/etc/xdg/lxqt/lxqt.conf
+sed -i "s@/usr/share/lxqt/themes/frost/lxqt-origami-light.png@/usr/share/backgrounds/nutyx/nutyx.jpg@" \
+$PKG/etc/xdg/pcmanfm-qt/lxqt/settings.conf
 }
 
 uptodate() {
