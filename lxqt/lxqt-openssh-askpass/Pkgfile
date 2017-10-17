@@ -1,0 +1,47 @@
+# Depends on: lxqt-build-tools liblxqt
+
+description="LXQt openssh password prompt"
+url="http://lxqt.org"
+packager="greg<greg@nutyx.org>"
+contributors=""
+
+run=()
+
+
+
+name=lxqt-openssh-askpass
+version=0.11.1
+release=1
+
+source=(https://github.com/lxde/$name/releases/download/$version/$name-$version.tar.xz
+)
+
+prepare() {
+echo "Fonction prepare sans objet"
+}
+
+build() {
+mkdir -p build
+cd build
+cmake $SRC/$name-$version \
+-DCMAKE_INSTALL_PREFIX=/usr 
+make
+}
+
+package() {
+cd build
+make DESTDIR=$PKG install
+}
+
+uptodate() {
+feed=https://github.com/lxde/$name/releases.atom 
+exec="lynx -read_timeout=20 -dump -listonly -nonumbers $feed"
+ligne=1 # nombre de notification ? afficher
+$exec $feed | grep title | \
+sed "s@<title>@@" | \
+sed "s@</title>@@" | \
+head -n $(($ligne+1 )) | \
+tail -n $(($ligne))
+}
+
+# Recette editee le 17/10/17 a 10:23:50

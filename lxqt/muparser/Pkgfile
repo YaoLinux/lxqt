@@ -1,0 +1,47 @@
+# Depends on: 
+
+description="A fast math parser library"
+url="http://muparser.sourceforge.net/"
+packager="greg<greg@nutyx.org>"
+contributors=""
+
+run=()
+
+
+
+name=muparser
+version=2.2.5
+release=1
+
+source=(https://github.com/beltoforion/muparser/archive/v$version.tar.gz
+)
+
+prepare() {
+echo "Fonction prepare sans objet"
+}
+
+build() {
+cd $SRC/$name-$version
+./configure --prefix=/usr
+make
+}
+
+package() {
+cd $SRC/$name-$version
+make DESTDIR=$PKG install
+}
+
+uptodate() {
+feed=https://github.com/beltoforion/$name/releases.atom 
+exec="lynx -read_timeout=20 -dump -listonly -nonumbers $feed"
+ligne=1 # nombre de notification ? afficher
+$exec $feed | grep title | \
+sed "s@<title>@@" | \
+sed "s@</title>@@" | \
+sed "s@muparser@@" | \
+sed "s@V@@" | \
+head -n $(($ligne+1 )) | \
+tail -n $(($ligne))
+}
+
+# Recette editee le 17/10/17 a 12:54:53

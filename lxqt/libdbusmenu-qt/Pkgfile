@@ -1,0 +1,50 @@
+# Depends on: cmake qtbase qjson
+
+description="Library that provides a Qt5 implementation of the DBusMenu protocol"
+url="https://www.kde.org/"
+packager="greg<greg@nutyx.org>"
+contributors=""
+
+run=()
+
+
+
+name=libdbusmenu-qt
+version=0.9.3+16.04.20160218
+release=1
+
+source=(http://www.linuxfromscratch.org/~krejzi/libdbusmenu-qt-$version.tar.xz
+)
+
+prepare() {
+cd libdbusmenu-qt-$version
+mkdir build
+
+}
+
+build() {
+cd libdbusmenu-qt-$version/build
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+-DCMAKE_INSTALL_LIBDIR=lib \
+-DCMAKE_BUILD_TYPE=Release  \
+-DWITH_DOC=OFF  \
+-Wno-dev .. 
+make
+}
+
+package() {
+cd libdbusmenu-qt-$version/build
+make DESTDIR=$PKG install
+}
+
+uptodate() {
+feed=http://www.linuxfromscratch.org/~krejzi/?C=M;O=D
+exec="lynx -read_timeout=20 -dump -listonly -nonumbers $feed"
+ligne=1 # nombre de notification ? afficher
+$exec $feed | grep libdbusmenu | \
+sed "s@.tar.xz@@" | \
+#head -n $(($ligne+1)) | \
+tail -n $(($ligne))
+}
+
+# Recette editee le 17/10/17 a 12:01:00
