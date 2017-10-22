@@ -15,18 +15,10 @@ version=0.12.0
 release=1
 
 source=(https://github.com/lxde/$name/releases/download/$version/$name-$version.tar.xz
-lxqt-config-input.diff
-main.diff
 )
 
 prepare() {
-cd $SRC/$name-$version
-sed -i "/CURRENT_BINARY_DIR/a \"\${CMAKE_CURRENT_BINARY_DIR}/$new\"" \
-      $SRC/$name-$version/lxqt-config-appearance/CMakeLists.txt \
-      $SRC/$name-$version/lxqt-config-input/CMakeLists.txt &&
-unset new
-patch -Np1 -i "$SRC/lxqt-config-input.diff"
-patch -Np1 -i "$SRC/main.diff"
+echo "Fonction prepare sans objet"
 }
 
 build() {
