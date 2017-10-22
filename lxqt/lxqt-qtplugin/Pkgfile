@@ -1,4 +1,4 @@
-# Depends on: lxqt-build-tools libdbusmenu-qt libqtxdg
+# Depends on: lxqt-build-tools libdbusmenu-qt libqtxdg libfm-qt
 
 description="LXQt platform integration for Qt"
 url="http://lxqt.org"
