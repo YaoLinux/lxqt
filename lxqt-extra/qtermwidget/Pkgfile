@@ -10,7 +10,7 @@ run=()
 
 
 name=qtermwidget
-version=0.7.1
+version=0.8.0
 release=1
 
 source=(https://github.com/lxde/$name/archive/$version.tar.gz

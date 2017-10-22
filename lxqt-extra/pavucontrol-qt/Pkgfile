@@ -10,7 +10,7 @@ run=()
 
 
 name=pavucontrol-qt
-version=0.2.0
+version=0.3.0
 release=1
 
 source=(https://github.com/lxde/$name/archive/$version.tar.gz
