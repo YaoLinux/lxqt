@@ -1,17 +1,17 @@
-# Depends on: liblxqt xdg-user-dirs breeze-icons oxygen-icons5 lxqt-build-tools
+# Depends on: liblxqt xdg-user-dirs breeze-icons oxygen-icons5 lxqt-build-tools openbox
 
 description="The LXQt session"
 url="http://lxqt.org"
 packager="tnut<tnut@nutyx.org>"
 contributors="Greg"
 
-run=()
+run=(breeze-icons openbox)
 
 
 
 name=lxqt-session
 version=0.12.0
-release=2
+release=3
 
 source=(https://github.com/lxde/$name/releases/download/$version/$name-$version.tar.xz
 )
@@ -31,6 +31,9 @@ make
 package() {
 cd build
 make DESTDIR=$PKG install
+
+sed -i "s@icon_theme=oxygen@icon_theme=breeze@" \
+$PKG/etc/xdg/lxqt/lxqt.conf
 }
 
 uptodate() {
