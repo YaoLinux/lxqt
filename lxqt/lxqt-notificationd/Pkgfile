@@ -1,9 +1,9 @@
-# Depends on: lxqt-build-tools lxqt-common liblxqt
+# Depends on: lxqt-build-tools liblxqt
 
 description="LXQt notification daemon and library."
 url="http://lxqt.org"
-packager="greg<greg@nutyx.org>"
-contributors=""
+packager="tnut <tnut@nutyx.org>"
+contributors="Greg"
 
 run=()
 
@@ -11,7 +11,7 @@ run=()
 
 name=lxqt-notificationd
 version=0.12.0
-release=1
+release=2
 
 source=(https://github.com/lxde/$name/releases/download/$version/$name-$version.tar.xz
 )
