@@ -1,9 +1,9 @@
-# Depends on: cmake qtbase
+# Depends on: cmake qtbase lxqt-build-tools
 
 description="Is a terminal widget for Qt"
 url="https://github.com/qterminal/"
-packager="greg<greg@nutyx.org>"
-contributors=""
+packager="tnut<tnut@nutyx.org>"
+contributors="Greg"
 
 run=()
 
@@ -11,7 +11,7 @@ run=()
 
 name=qtermwidget
 version=0.8.0
-release=1
+release=2
 
 source=(https://github.com/lxde/$name/archive/$version.tar.gz
 )
