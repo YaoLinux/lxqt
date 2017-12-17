@@ -1,6 +1,6 @@
-# Depends on: qt4 cmake
+# Depends on: qtbase cmake
 
-description="A Qt4-based library that maps JSON data to QVariant objects"
+description="A Qt-based library that maps JSON data to QVariant objects"
 url="http://qjson.sourceforge.net"
 packager="greg<greg@nutyx.org>"
 contributors=""
