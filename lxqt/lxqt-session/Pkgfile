@@ -7,33 +7,18 @@ contributors="Greg"
 
 run=(breeze-icons openbox)
 
-
-
 name=lxqt-session
-version=0.12.0
-release=3
+version=0.13.0
 
-source=(https://github.com/lxde/$name/releases/download/$version/$name-$version.tar.xz
-)
-
-prepare() {
-echo "Fonction prepare sans objet"
-}
+source=(https://github.com/lxqt/$name/releases/download/$version/$name-$version.tar.xz)
 
 build() {
 mkdir -p build
 cd build
-cmake $SRC/$name-$version \
+cmake ../$name-$version \
 -DCMAKE_INSTALL_PREFIX=/usr 
 make
-}
-
-package() {
-cd build
 make DESTDIR=$PKG install
-
-sed -i "s@icon_theme=oxygen@icon_theme=breeze@" \
-$PKG/etc/xdg/lxqt/lxqt.conf
 }
 
 uptodate() {
