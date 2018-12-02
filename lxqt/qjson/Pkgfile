@@ -5,31 +5,21 @@ url="http://qjson.sourceforge.net"
 packager="greg<greg@nutyx.org>"
 contributors=""
 
-run=()
-
-
-
 name=qjson
 version=0.9.0
-release=1
 
-source=(https://github.com/flavio/qjson/archive/$version.tar.gz
-)
+PKGMK_KEEP_SOURCES="no"
 
-prepare() {
-mkdir -p build
-}
+source=(https://github.com/flavio/qjson/archive/$version.tar.gz)
+
 
 build() {
+mkdir -p build
 cd build
 cmake ../$name-$version \
 -DCMAKE_INSTALL_PREFIX=/usr \
 -DCMAKE_BUILD_TYPE=Release
 make
-}
-
-package() {
-cd build
 make DESTDIR=$PKG install
 }
 
