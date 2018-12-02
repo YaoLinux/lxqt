@@ -5,16 +5,11 @@ url="https://www.kde.org/"
 packager="greg<greg@nutyx.org>"
 contributors=""
 
-run=()
-
-
-
 name=libdbusmenu-qt
 version=0.9.3+16.04.20160218
 release=1
 
-source=(http://www.linuxfromscratch.org/~krejzi/libdbusmenu-qt-$version.tar.xz
-)
+source=(http://www.linuxfromscratch.org/~krejzi/libdbusmenu-qt-$version.tar.xz)
 
 prepare() {
 cd libdbusmenu-qt-$version
