@@ -5,23 +5,14 @@ url="https://github.com/MartinBriza/adwaita-qt"
 packager="greg<greg@nutyx.org>"
 contributors=""
 
-run=()
-
-
-
 name=adwaita-qt
 version=1.0
-release=1
 
-source=(https://github.com/MartinBriza/$name/archive/$version.tar.gz
-)
-
-prepare() {
-mkdir -p $name-$version/build-qt5
-}
+source=(https://github.com/MartinBriza/$name/archive/$version.tar.gz)
 
 build() {
 cd $name-$version
+mkdir -p build-qt5
 pushd build-qt5
 cmake .. \
 -DCMAKE_BUILD_TYPE=Release \
@@ -29,10 +20,6 @@ cmake .. \
 -DQT_ROOT=/usr/lib/qt
 popd
 make -C build-qt5
-}
-
-package() {
-cd $name-$version
 make install/fast DESTDIR=$PKG -C build-qt5
 }
 
