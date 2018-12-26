@@ -2,22 +2,15 @@
 
 description="LXQt openssh password prompt"
 url="http://lxqt.org"
-packager="greg<greg@nutyx.org>"
-contributors=""
+packager="tnut <tnut@nutyx.org>"
+contributors="Greg"
 
 name=lxqt-openssh-askpass
 version=0.13.0
 
 source=(https://github.com/lxqt/$name/releases/download/$version/$name-$version.tar.xz)
 
-build() {
-mkdir -p build
-cd build
-cmake ../$name-$version \
--DCMAKE_INSTALL_PREFIX=/usr 
-make
-make DESTDIR=$PKG install
-}
+build=kde5
 
 uptodate() {
 feed=https://github.com/lxde/$name/releases.atom 
@@ -29,5 +22,3 @@ sed "s@</title>@@" | \
 head -n $(($ligne+1 )) | \
 tail -n $(($ligne))
 }
-
-# Recette editee le 17/10/17 a 10:23:50
