@@ -32,5 +32,3 @@ sed "s@V@@" | \
 head -n $(($ligne+1 )) | \
 tail -n $(($ligne))
 }
-
-# Recette editee le 17/10/17 a 12:54:53
