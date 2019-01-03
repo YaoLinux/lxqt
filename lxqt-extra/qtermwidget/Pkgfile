@@ -5,6 +5,8 @@ url="https://github.com/qterminal/"
 packager="tnut<tnut@nutyx.org>"
 contributors="Greg"
 
+PKGMK_KEEP_SOURCES="no"
+
 name=qtermwidget
 version=0.9.0
 
